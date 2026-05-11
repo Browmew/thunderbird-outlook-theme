@@ -48,6 +48,7 @@ In the Config Editor:
    - `userChrome.css`
    - `custom.css`
    - `Titlebar_Icons/` folder
+   - `user.js` *(optional)* — automatically sets a couple of config tweaks on startup (disables the "What's New" page after updates). Place it directly in your **profile folder** (one level above `chrome`), not inside `chrome` itself.
 5. If you want a wallpaper background, place an image named **`wallpaper.jpg`** in the `chrome` folder. Remove or rename it if you do not want a background.
 6. Restart Thunderbird
 
@@ -64,6 +65,7 @@ Both addons are WebExtension experiments and require one extra config change bef
 1. Open the Config Editor (`Settings → General → Config Editor…`)
 2. Search for `extensions.experiments.enabled` and set it to **`true`**
 3. Search for `xpinstall.signatures.required` and set it to **`false`**
+4. Restart Thunderbird
 
 ### Sender Avatar Circles
 
