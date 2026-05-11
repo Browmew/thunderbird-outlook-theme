@@ -2,6 +2,9 @@
 
 A custom Thunderbird theme that gives your email client an Outlook-style look — complete with sender avatar circles, an Outlook-inspired layout, and an optional one-click delete button on every email row.
 
+![Screenshot 1](screenshots/ThunderbirdThemeCensored.png)
+![Screenshot 2](screenshots/UpdatedThemeCensored.png)
+
 ---
 
 ## Features
