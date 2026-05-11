@@ -1,0 +1,281 @@
+/* CUSTOM CSS - PLACE YOUR CUSTOM OVERRIDES BELOW */
+
+/* --- Wallpaper behind email list and reading pane when no email selected --- */
+#threadTree,
+#messagePane {
+    background-image: url("wallpaper.jpg") !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+    background-color: transparent !important;
+}
+
+/* =====================================================
+   OUTLOOK-STYLE LAYOUT OVERRIDES
+   ===================================================== */
+
+/* --- Folder Pane --- */
+/* Keep rows compact, close to original */
+#folderTree .container {
+    min-height: 26px !important;
+    padding-block: 2px !important;
+}
+
+#folderTree li > .container > .name {
+    font-size: 0.95rem !important;
+    font-weight: 400 !important;
+}
+
+/* Account-level labels — slightly larger, kept from original */
+#folderTree li[data-server-type] > .container > .name {
+    font-size: 1.18rem !important;
+    font-weight: normal !important;
+}
+
+/* Keep folder icons original size */
+#folderTree li > .container > .icon {
+    width: 16px !important;
+    height: 16px !important;
+    mask-size: 16px 16px !important;
+    background-size: 16px 16px !important;
+    flex-shrink: 0 !important;
+}
+
+/* Unread count — original styling */
+.unread > .container > .unread-count {
+    font-size: 1.01rem !important;
+    font-weight: normal !important;
+}
+
+/* --- Thread/reply chain rows: teal left border only --- */
+#threadTree .card-layout.children .card-container {
+    border-left: 3px solid #6aadb5 !important;
+}
+
+/* --- Hide duplicate thread pane search/filter bar --- */
+#threadPaneHeaderBar {
+    display: none !important;
+}
+
+/* Sender name — truncate with ellipsis, leave room for date */
+.sender {
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+}
+
+/* Subject container — allow it to use full available width */
+.thread-card-subject-container {
+    font-size: 1.0rem !important;
+    margin-top: 2px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    padding-inline-end: 28px !important;
+    box-sizing: border-box !important;
+}
+
+.thread-card-subject-container .subject {
+    font-size: 1.0rem !important;
+    font-weight: 500 !important;
+}
+
+/* Preview snippet text */
+.thread-card-subject-container .thread-card-snippet {
+    font-size: 0.92rem !important;
+    opacity: 0.75 !important;
+    margin-top: 2px !important;
+}
+
+/* Date/time text */
+.date {
+    font-size: 0.88rem !important;
+    margin-top: 4px !important;
+    flex-shrink: 0 !important;
+}
+
+/* Gap between cards */
+.thread-card-dynamic-row {
+    row-gap: 2px !important;
+    padding-bottom: 2px !important;
+}
+
+/* --- Message Header (reading pane) --- */
+/* Bigger sender avatar like Outlook */
+.recipient-avatar {
+    height: 52px !important;
+    width: 52px !important;
+    font-size: 1.5rem !important;
+    border-radius: 50% !important;
+}
+
+/* Bigger sender name in reading pane */
+.recipient-multi-line-name {
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+}
+
+/* Subject line in reading pane */
+#expandedsubjectBox {
+    font-size: 1.3rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 4px !important;
+}
+
+/* To/Cc labels */
+#toHeading,
+#ccHeading,
+#reply-toHeading {
+    font-size: 0.95rem !important;
+}
+
+/* More padding in message header area */
+#messageHeader {
+    padding: 12px 16px !important;
+}
+
+/* Reading pane ~15% wider than email list */
+#messagepanebox {
+    flex: 1.15 !important;
+}
+
+#threadContentArea {
+    flex: 1 !important;
+}
+
+/* --- Spaces / Left Nav Icons --- */
+/* Bigger sidebar nav icons */
+#mailButton,
+#addressBookButton,
+#calendarButton,
+#tasksButton,
+#chatButton,
+#settingsButton {
+    width: 40px !important;
+    height: 40px !important;
+    background-size: 24px 24px !important;
+    margin-block: 2px !important;
+}
+
+/* --- Toolbar buttons (Reply, Forward, etc.) --- */
+.toolbarbutton-1 {
+    padding: 6px 10px !important;
+    border-radius: 5px !important;
+}
+
+.toolbarbutton-1 .toolbarbutton-icon {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.message-header-view-button .toolbarbutton-text {
+    font-size: 0.92rem !important;
+    padding: 6px 10px !important;
+}
+
+/* --- Quick filter bar --- */
+#threadPaneQuickFilterButton,
+#threadPaneDisplayButton,
+#displayButton {
+    width: 28px !important;
+    height: 28px !important;
+    background-size: 18px 18px !important;
+}
+
+/* --- Unread message highlighting --- */
+/* Blue left border on unread cards */
+tr[data-properties~="unread"] .card-container {
+    border-left: 3px solid #2b84d8 !important;
+    padding-inline-start: 47px !important;
+    min-height: 68px !important;
+}
+
+/* Ensure subject/snippet row is always visible on unread */
+tr[data-properties~="unread"] .thread-card-subject-container {
+    display: block !important;
+    visibility: visible !important;
+    overflow: hidden !important;
+}
+
+/* Bolder sender name on unread */
+tr[data-properties~="unread"] .sender {
+    color: #1060a8 !important;
+    font-weight: 700 !important;
+}
+
+/* Bolder subject on unread */
+tr[data-properties~="unread"] .subject {
+    font-weight: 600 !important;
+}
+
+/* --- Date group headers (Today, Yesterday, Last 7 Days, etc.) --- */
+/* Group headers are dummy rows in the card view */
+#threadTree tr[data-properties~="dummy"] .card-container {
+    background-color: #1a1a1a !important;
+    border-radius: 0 !important;
+    border-left: none !important;
+    box-shadow: none !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    display: flex !important;
+}
+
+#threadTree tr[data-properties~="dummy"] .thread-card-column {
+    justify-content: center !important;
+    display: flex !important;
+}
+
+#threadTree tr[data-properties~="dummy"] .thread-card-dynamic-row {
+    align-items: center !important;
+    display: flex !important;
+}
+
+#threadTree tr[data-properties~="dummy"] .subject {
+    font-size: 1.12rem !important;
+    font-weight: 700 !important;
+    color: #cfd3da !important;
+    display: block !important;
+}
+
+/* =====================================================
+   OPTIONAL: TRASH ICON ON EMAIL CARDS (visual only)
+   Change --trash-icon to 1 to enable, 0 to disable.
+   Note: this is decorative — CSS cannot click/delete.
+   ===================================================== */
+:root {
+    --trash-icon: 0; /* 0 = off  |  1 = on */
+}
+
+/* Card needs to be a positioning context for ::after */
+.card-container {
+    position: relative !important;
+}
+
+/* Trash icon rendered as a pseudo-element */
+.card-container::after {
+    content: "";
+    position: absolute;
+    inset-inline-end: 38px;
+    bottom: 9px;
+    width: 14px;
+    height: 14px;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='%23888' d='M5 1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1h2.5a.5.5 0 0 1 0 1H13v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3h-.5a.5.5 0 0 1 0-1H5zm1 0v1h4V1H6zm-2 2v10a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3H4zm2 2a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0v-5A.5.5 0 0 1 6 5zm4 0a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0v-5A.5.5 0 0 1 10 5z'/></svg>");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    pointer-events: none; /* purely decorative — does not intercept clicks */
+}
+
+/* Show on row hover, selection, or current row — scaled by the toggle */
+tr:hover .card-container::after,
+tr[data-properties~="current"] .card-container::after,
+tr[selected="true"] .card-container::after {
+    opacity: calc(0.72 * var(--trash-icon));
+}
