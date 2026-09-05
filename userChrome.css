@@ -352,19 +352,19 @@ ol[role="tree"] .container .twisty {
 /* FIX FOR ICON CLASHES IN NAVIGATOR */
 
 #folderTree li[data-folder-type="sent"] > .container > .icon {
-    / content: radial-gradient; /
+    /* The default icon content is cleared by the shared rule below. */
     --icon-color: #FFFFFF00 !important;
 }
 #folderTree li[data-folder-type="drafts"] > .container > .icon {
-    / content: var(--icon-draft); /
+    /* The default icon content is cleared by the shared rule below. */
     --icon-color: #FFFFFF00 !important;
 }
 #folderTree li[data-folder-type="inbox"] > .container > .icon {
-    / content: var(--icon-inbox); /
+    /* The default icon content is cleared by the shared rule below. */
     --icon-color: #FFFFFF00 !important;
 }
 #folderTree li[data-folder-type="trash"] > .container > .icon {
-    / content: var(--icon-trash); */
+    /* The default icon content is cleared by the shared rule below. */
     --icon-color: #FFFFFF00 !important;
 }
 #folderTree li[data-folder-type="junk"] > .container > .icon {
@@ -1116,4 +1116,872 @@ global-search-bar {
 [is="tree-view-table-body"] .card-layout.selected:not(.current) .subject,
 [is="tree-view-table-body"] .card-layout.selected:not(.current) .date {
 	color: #ffffff !important;
+}
+
+/* =====================================================
+   FLUENTBIRD POLISHED 2.0
+   Final overrides for Thunderbird 140+
+   ===================================================== */
+
+:root {
+	--fb-accent: #5b9df9;
+	--fb-accent-strong: #2f7edb;
+	--fb-danger: #e45d68;
+	--fb-text: #202124;
+	--fb-text-muted: #68707c;
+	--fb-surface: rgba(250, 251, 253, 0.92);
+	--fb-surface-solid: #f7f8fa;
+	--fb-surface-raised: rgba(255, 255, 255, 0.96);
+	--fb-surface-hover: rgba(232, 240, 250, 0.96);
+	--fb-surface-selected: rgba(211, 229, 251, 0.98);
+	--fb-border: rgba(24, 38, 56, 0.13);
+	--fb-border-strong: rgba(47, 126, 219, 0.48);
+	--fb-shadow: 0 1px 2px rgba(20, 31, 46, 0.10), 0 5px 16px rgba(20, 31, 46, 0.06);
+	--fb-radius-sm: 6px;
+	--fb-radius: 9px;
+	--fb-row-height: 58px;
+}
+
+/* Keep the primary navigation useful and visually balanced. */
+#spacesToolbar {
+	padding: 46px 4px 6px !important;
+	gap: 2px !important;
+}
+
+#mailButton,
+#addressBookButton,
+#calendarButton,
+#tasksButton,
+#chatButton,
+#settingsButton {
+	inline-size: 36px !important;
+	block-size: 36px !important;
+	min-inline-size: 36px !important;
+	border-radius: 9px !important;
+	background-size: 22px 22px !important;
+	margin-block: 1px !important;
+	transition: background-color 120ms ease, transform 120ms ease !important;
+}
+
+#spacesToolbar .spaces-toolbar-button:hover {
+	background-color: color-mix(in srgb, var(--fb-accent) 14%, transparent) !important;
+}
+
+#spacesToolbar .spaces-toolbar-button[checked="true"] {
+	background-color: color-mix(in srgb, var(--fb-accent) 22%, transparent) !important;
+}
+
+/* Tabs: clearer active state, less visual bulk. */
+#tabs-toolbar {
+	margin-bottom: 6px !important;
+}
+
+.tabmail-tab {
+	min-height: 32px !important;
+	border-radius: var(--fb-radius-sm) !important;
+}
+
+.tabmail-tab[selected="true"] {
+	box-shadow: inset 0 -2px 0 var(--fb-accent), 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+}
+
+.tab-background[selected="true"] {
+	background-color: var(--fb-surface-raised) !important;
+}
+
+/* Folder pane: retain density, improve hierarchy and targets. */
+#folderPane {
+	background-color: color-mix(in srgb, var(--fb-surface-solid) 92%, transparent) !important;
+}
+
+#folderPaneHeaderBar {
+	min-height: 46px !important;
+	padding: 6px 8px !important;
+	border-bottom: 1px solid var(--fb-border) !important;
+}
+
+#folderTree {
+	padding: 3px !important;
+}
+
+#folderTree .mode-container {
+	min-height: 28px !important;
+	margin-top: 1px !important;
+	padding-inline: 5px 3px !important;
+}
+
+#folderTree .mode-name {
+	font-size: 0.92rem !important;
+	font-weight: 650 !important;
+	letter-spacing: 0.01em !important;
+}
+
+#folderTree li > .container {
+	min-height: 25px !important;
+	margin-block: 0 !important;
+	padding-block: 1px !important;
+	border: 1px solid transparent !important;
+	border-radius: 7px !important;
+	transition: background-color 100ms ease, border-color 100ms ease !important;
+}
+
+#folderTree li > .container:hover {
+	background-color: color-mix(in srgb, var(--fb-accent) 9%, transparent) !important;
+}
+
+#folderTree li.selected.current > .container,
+#folderTree li.selected > .container {
+	background-color: color-mix(in srgb, var(--fb-accent) 17%, var(--fb-surface-solid)) !important;
+	border-color: color-mix(in srgb, var(--fb-accent) 25%, transparent) !important;
+}
+
+#folderTree li.selected > .container::before {
+	inset-block: 6px !important;
+	inline-size: 3px !important;
+	background-color: var(--fb-accent-strong) !important;
+	border-radius: 3px !important;
+}
+
+#folderTree li[data-server-type] > .container {
+	margin-top: 2px !important;
+}
+
+#folderTree li[data-server-type]:not(:first-of-type) > .container {
+	margin-top: 2px !important;
+}
+
+#folderTree li[data-server-type] > .container > .name {
+	font-size: 0.94rem !important;
+	font-weight: 620 !important;
+}
+
+#folderTree li > .container > .name {
+	font-size: 0.94rem !important;
+}
+
+#folderTree .folder-count-badge {
+	min-width: 22px !important;
+	padding: 1px 6px !important;
+	border-radius: 999px !important;
+	font-size: 0.78rem !important;
+	font-variant-numeric: tabular-nums !important;
+}
+
+.unread > .container > .unread-count {
+	background-color: color-mix(in srgb, var(--fb-accent) 13%, transparent) !important;
+	color: var(--fb-accent-strong) !important;
+	font-weight: 650 !important;
+}
+
+/* Favourite Folders becomes a flat list of account shortcuts. */
+#folderTree .fb-account-shortcut > ul,
+#folderTree .fb-account-shortcut > .container > .twisty,
+#folderTree .fb-account-shortcut > .container > .folder-size,
+#folderTree .fb-account-shortcut > .container > .status-icon {
+	display: none !important;
+}
+
+#folderTree .fb-account-shortcut > .container > .folder-count-badge {
+	display: none !important;
+}
+
+#folderTree .fb-account-shortcut-mode[data-fb-show-counts="true"] .fb-account-shortcut > .container > .folder-count-badge:not(:empty):not([hidden]) {
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	flex: 0 0 auto !important;
+	box-sizing: border-box !important;
+	min-width: 22px !important;
+	padding: 1px 6px !important;
+	margin-inline-start: auto !important;
+	border: 1px solid color-mix(in srgb, var(--fb-accent) 30%, var(--fb-border)) !important;
+	border-radius: 999px !important;
+	background-color: color-mix(in srgb, var(--fb-accent) 13%, transparent) !important;
+	color: var(--fb-accent-strong) !important;
+	font-size: 0.78rem !important;
+	font-weight: 650 !important;
+	font-variant-numeric: tabular-nums !important;
+	line-height: 1.25 !important;
+}
+
+#folderTree .fb-account-shortcut > .container {
+	min-height: 30px !important;
+	padding: 3px 7px !important;
+	cursor: pointer !important;
+}
+
+#folderTree .fb-account-shortcut > .container > .name {
+	min-width: 0 !important;
+	flex: 1 1 auto !important;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+	white-space: nowrap !important;
+	font-size: 0.94rem !important;
+	font-weight: 650 !important;
+}
+
+#folderTree .fb-account-shortcut.fb-active-account-shortcut > .container {
+	background-color: color-mix(in srgb, var(--fb-accent) 17%, var(--fb-surface-solid)) !important;
+	border-color: color-mix(in srgb, var(--fb-accent) 30%, transparent) !important;
+}
+
+#folderTree .fb-account-shortcut-mode > .mode-container .mode-name {
+	font-weight: 720 !important;
+}
+
+#folderTree .fb-account-shortcut-mode > .mode-container {
+	display: flex !important;
+	align-items: center !important;
+}
+
+#folderTree .fb-account-controls {
+	display: inline-flex !important;
+	align-items: center !important;
+	gap: 3px !important;
+	margin-inline-start: auto !important;
+}
+
+#folderTree .fb-account-controls > button {
+	display: inline-grid !important;
+	place-items: center !important;
+	box-sizing: border-box !important;
+	min-width: 25px !important;
+	width: 25px !important;
+	height: 25px !important;
+	padding: 0 !important;
+	border: 1px solid transparent !important;
+	border-radius: 6px !important;
+	background: transparent !important;
+	color: inherit !important;
+	font: 700 11px/1 system-ui, sans-serif !important;
+	cursor: pointer !important;
+}
+
+#folderTree .fb-account-controls > button:hover {
+	border-color: color-mix(in srgb, currentColor 18%, transparent) !important;
+	background: color-mix(in srgb, var(--fb-accent) 12%, transparent) !important;
+}
+
+#folderTree .fb-account-shortcut-mode[data-fb-show-header-buttons="false"] > .mode-container > :is(.mode-button, .fb-account-controls) {
+	display: none !important;
+}
+
+#folderTree .fb-account-shortcut-mode[data-fb-show-header-buttons="false"] > .mode-container {
+	cursor: context-menu !important;
+}
+
+#folderTree .fb-account-hidden {
+	display: none !important;
+}
+
+#folderTree .fb-account-shortcut[draggable="true"] > .container,
+#folderTree .fb-provider-heading[draggable="true"] {
+	cursor: grab !important;
+}
+
+#folderTree :is(.fb-account-shortcut, .fb-provider-heading).fb-dragging {
+	opacity: 0.38 !important;
+}
+
+#folderTree :is(.fb-account-shortcut, .fb-provider-heading).fb-drop-target {
+	box-shadow: inset 0 2px 0 var(--fb-accent-strong) !important;
+}
+
+#folderTree :is(.fb-account-shortcut, .fb-provider-heading).fb-drop-target[data-fb-drop-position="after"] {
+	box-shadow: inset 0 -2px 0 var(--fb-accent-strong) !important;
+}
+
+#folderTree .fb-account-shortcut-mode[data-fb-density="compact"] .fb-account-shortcut > .container {
+	min-height: 24px !important;
+	padding-block: 1px !important;
+}
+
+#folderTree .fb-account-shortcut-mode[data-fb-density="compact"] .fb-account-shortcut > .container > .name {
+	font-size: 0.84rem !important;
+}
+
+#folderTree .fb-account-shortcut-mode[data-fb-density="compact"] > ul > .fb-provider-heading {
+	min-height: 21px !important;
+	padding-block: 6px 3px !important;
+	font-size: 9px !important;
+}
+
+#folderTree .fb-account-shortcut-mode[data-fb-density="spacious"] .fb-account-shortcut > .container {
+	min-height: 38px !important;
+	padding-block: 6px !important;
+}
+
+#folderTree .fb-account-shortcut-mode[data-fb-density="spacious"] .fb-account-shortcut > .container > .name {
+	font-size: 1rem !important;
+}
+
+#folderTree .fb-account-shortcut-mode[data-fb-density="spacious"] > ul > .fb-provider-heading {
+	min-height: 34px !important;
+	padding-block: 12px 5px !important;
+}
+
+#folderTree .fb-account-shortcut-mode > ul > .fb-provider-heading {
+	display: flex !important;
+	align-items: end !important;
+	box-sizing: border-box !important;
+	min-height: 28px !important;
+	padding: 9px 10px 4px 15px !important;
+	color: color-mix(in srgb, var(--sidebar-text-color, currentColor) 62%, transparent) !important;
+	font-size: 10px !important;
+	font-weight: 750 !important;
+	line-height: 1 !important;
+	letter-spacing: 0.09em !important;
+	text-transform: uppercase !important;
+	pointer-events: auto !important;
+	user-select: none !important;
+}
+
+.fb-account-visibility-panel {
+	position: fixed !important;
+	z-index: 2147483647 !important;
+	display: flex !important;
+	flex-direction: column !important;
+	gap: 3px !important;
+	box-sizing: border-box !important;
+	width: min(430px, calc(100vw - 16px)) !important;
+	max-height: min(520px, calc(100vh - 16px)) !important;
+	padding: 12px !important;
+	overflow: auto !important;
+	border: 1px solid color-mix(in srgb, currentColor 18%, transparent) !important;
+	border-radius: 10px !important;
+	background: var(--fb-surface-solid, #202124) !important;
+	color: var(--fb-text, #f3f5f7) !important;
+	box-shadow: 0 14px 38px rgba(0, 0, 0, 0.42) !important;
+	font: 13px/1.25 system-ui, sans-serif !important;
+}
+
+.fb-account-visibility-panel > strong {
+	padding: 2px 4px 7px !important;
+	font-size: 14px !important;
+}
+
+.fb-account-visibility-panel > .fb-account-panel-subheading {
+	margin-top: 8px !important;
+	padding-top: 10px !important;
+	border-top: 1px solid color-mix(in srgb, currentColor 12%, transparent) !important;
+	font-size: 12px !important;
+	letter-spacing: 0.04em !important;
+}
+
+.fb-account-visibility-panel > .fb-account-options-hint {
+	display: block !important;
+	margin: 5px 4px 2px !important;
+	padding: 8px !important;
+	border-radius: 6px !important;
+	background: color-mix(in srgb, var(--fb-accent) 9%, transparent) !important;
+	color: color-mix(in srgb, currentColor 72%, transparent) !important;
+	font-size: 11px !important;
+	line-height: 1.35 !important;
+}
+
+.fb-account-visibility-panel > label {
+	display: grid !important;
+	grid-template-columns: 18px minmax(0, 1fr) minmax(105px, 0.55fr) !important;
+	align-items: center !important;
+	gap: 8px !important;
+	min-height: 30px !important;
+	padding: 3px 5px !important;
+	border-radius: 6px !important;
+	cursor: pointer !important;
+}
+
+.fb-account-visibility-panel > .fb-account-option-toggle {
+	grid-template-columns: 18px minmax(0, 1fr) !important;
+}
+
+.fb-account-visibility-panel > label:hover {
+	background: color-mix(in srgb, var(--fb-accent) 12%, transparent) !important;
+}
+
+.fb-account-visibility-panel > label > span {
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+	white-space: nowrap !important;
+}
+
+.fb-account-visibility-panel > label > select {
+	box-sizing: border-box !important;
+	min-width: 0 !important;
+	height: 26px !important;
+	padding-inline: 6px !important;
+	border: 1px solid color-mix(in srgb, currentColor 18%, transparent) !important;
+	border-radius: 5px !important;
+	background: color-mix(in srgb, currentColor 6%, var(--fb-surface-solid, #202124)) !important;
+	color: inherit !important;
+	font: inherit !important;
+}
+
+.fb-custom-group-actions {
+	display: flex !important;
+	padding: 0 4px 5px !important;
+}
+
+.fb-custom-group-actions > button,
+.fb-custom-group-row > button {
+	min-height: 27px !important;
+	padding-inline: 9px !important;
+	border: 1px solid color-mix(in srgb, currentColor 18%, transparent) !important;
+	border-radius: 5px !important;
+	background: color-mix(in srgb, currentColor 6%, transparent) !important;
+	color: inherit !important;
+	font: 600 11px/1 system-ui, sans-serif !important;
+	cursor: pointer !important;
+}
+
+.fb-custom-group-actions > button:hover,
+.fb-custom-group-row > button:hover {
+	background: color-mix(in srgb, var(--fb-accent) 13%, transparent) !important;
+}
+
+.fb-custom-group-row {
+	display: grid !important;
+	grid-template-columns: minmax(0, 1fr) auto auto !important;
+	align-items: center !important;
+	gap: 5px !important;
+	min-height: 31px !important;
+	padding: 2px 4px !important;
+}
+
+.fb-custom-group-row > span {
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+	white-space: nowrap !important;
+	font-weight: 650 !important;
+}
+
+.fb-account-visibility-panel .fb-account-reset-order {
+	min-height: 30px !important;
+	margin-top: 8px !important;
+	border: 1px solid color-mix(in srgb, currentColor 18%, transparent) !important;
+	border-radius: 6px !important;
+	background: color-mix(in srgb, currentColor 7%, transparent) !important;
+	color: inherit !important;
+	cursor: pointer !important;
+}
+
+#folderTree .fb-account-shortcut-mode > ul > .fb-provider-heading:not(:first-child) {
+	margin-top: 3px !important;
+	border-top: 1px solid color-mix(in srgb, currentColor 10%, transparent) !important;
+}
+
+/* Give account shortcuts more room by compacting the secondary All Folders mode. */
+#folderTree .fb-all-folders-mode > .mode-container {
+	min-height: 22px !important;
+	margin-top: 0 !important;
+	padding-block: 0 !important;
+}
+
+#folderTree .fb-all-folders-mode.fb-all-folders-hidden {
+	display: none !important;
+}
+
+#folderTree .fb-all-folders-mode > .mode-container .mode-name {
+	font-size: 0.84rem !important;
+}
+
+#folderTree .fb-all-folders-mode > ul > li[data-server-type] > .container {
+	min-height: 22px !important;
+	margin-top: 0 !important;
+	padding-block: 0 !important;
+}
+
+#folderTree .fb-all-folders-mode > ul > li[data-server-type] > .container > .name {
+	font-size: 0.88rem !important;
+}
+
+/* Keep the message list compact; the global toolbar already exposes search. */
+#threadPaneHeaderBar {
+	display: none !important;
+}
+
+#threadPaneFolderName {
+	margin: 0 !important;
+	font-size: 1.05rem !important;
+	font-weight: 680 !important;
+}
+
+.thread-pane-count-info {
+	color: var(--fb-text-muted) !important;
+	font-size: 0.82rem !important;
+	font-variant-numeric: tabular-nums !important;
+}
+
+#threadPaneQuickFilterButton,
+#threadPaneDisplayButton,
+#displayButton {
+	inline-size: 32px !important;
+	block-size: 32px !important;
+	border-radius: 7px !important;
+	background-size: 17px 17px !important;
+}
+
+/* Message list: Outlook-like cards with a calm hierarchy. */
+#threadTree {
+	--tree-card-row-gap: 1px;
+	--tree-card-inline: 3px;
+	padding-block: 2px !important;
+	overflow-anchor: none !important;
+	background-color: color-mix(in srgb, var(--fb-surface-solid) 72%, transparent) !important;
+}
+
+#threadTree .card-layout:not([data-properties~="dummy"]) {
+	height: var(--fb-row-height) !important;
+	min-height: var(--fb-row-height) !important;
+}
+
+#threadTree .card-layout:not([data-properties~="dummy"]) > td {
+	padding: 1px 4px !important;
+}
+
+#threadTree .card-layout:not([data-properties~="dummy"]) .card-container {
+	min-height: calc(var(--fb-row-height) - 2px) !important;
+	padding: 5px 40px 5px 45px !important;
+	box-sizing: border-box !important;
+	grid-template-columns: minmax(0, 1fr) !important;
+	background-color: var(--fb-surface) !important;
+	border: 1px solid var(--fb-border) !important;
+	border-radius: 6px !important;
+	box-shadow: none !important;
+	overflow: hidden !important;
+	transition: background-color 100ms ease, border-color 100ms ease, box-shadow 100ms ease, transform 100ms ease !important;
+}
+
+/* The avatar replaces Thunderbird's otherwise empty read-status column. */
+#threadTree .card-layout:not([data-properties~="dummy"]) .card-container > .thread-card-column:first-of-type {
+	display: none !important;
+}
+
+#threadTree .card-layout:not([data-properties~="dummy"]) .card-container > .thread-card-column:last-of-type {
+	min-width: 0 !important;
+	position: static !important;
+}
+
+#threadTree .card-layout:not([data-properties~="dummy"]):hover .card-container {
+	background-color: var(--fb-surface-hover) !important;
+	border-color: color-mix(in srgb, var(--fb-accent) 28%, var(--fb-border)) !important;
+	box-shadow: var(--fb-shadow) !important;
+}
+
+#threadTree .card-layout.selected .card-container,
+#threadTree .card-layout.current .card-container,
+#threadTree .card-layout.selected.current .card-container,
+#threadTree:not(:focus, :focus-within) .card-layout.selected.current .card-container {
+	background-color: var(--fb-surface-selected) !important;
+	border-color: var(--fb-border-strong) !important;
+	box-shadow: inset 3px 0 0 var(--fb-accent-strong), var(--fb-shadow) !important;
+}
+
+#threadTree .card-layout[data-properties~="unread"] .card-container {
+	border-inline-start: 3px solid var(--fb-accent-strong) !important;
+}
+
+#threadTree .card-layout .thread-card-column {
+	gap: 2px !important;
+	padding-block: 0 !important;
+	justify-content: center !important;
+}
+
+#threadTree .card-layout .thread-card-row {
+	min-width: 0 !important;
+	min-height: 18px !important;
+	gap: 7px !important;
+	line-height: 1.3 !important;
+	overflow: visible !important;
+	position: static !important;
+}
+
+#threadTree .card-layout .sender {
+	min-width: 0 !important;
+	margin-top: 0 !important;
+	overflow: hidden !important;
+	color: var(--fb-text) !important;
+	font-size: 0.91rem !important;
+	font-weight: 620 !important;
+	line-height: 1.3 !important;
+	padding-block: 1px !important;
+	text-overflow: ellipsis !important;
+	white-space: nowrap !important;
+}
+
+#threadTree .card-layout[data-properties~="unread"] .sender {
+	color: var(--fb-accent-strong) !important;
+	font-weight: 730 !important;
+}
+
+#threadTree .card-layout .date {
+	margin-top: 0 !important;
+	color: var(--fb-text-muted) !important;
+	font-size: 0.72rem !important;
+	font-weight: 500 !important;
+	line-height: 1.3 !important;
+	padding-block: 1px !important;
+	font-variant-numeric: tabular-nums !important;
+	white-space: nowrap !important;
+}
+
+#threadTree .card-layout .thread-card-dynamic-row {
+	grid-template: "button subject info" minmax(18px, max-content) / auto minmax(0, 1fr) auto !important;
+	gap: 4px 7px !important;
+	min-height: 18px !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	line-height: 1.3 !important;
+	overflow: visible !important;
+	position: static !important;
+}
+
+#threadTree .card-layout .thread-card-subject-container {
+	width: 100% !important;
+	min-width: 0 !important;
+	padding-inline: 0 !important;
+	overflow: hidden !important;
+	color: var(--fb-text-muted) !important;
+	font-size: 0.83rem !important;
+	line-height: 1.35 !important;
+}
+
+#threadTree .card-layout .subject {
+	display: block !important;
+	overflow: hidden !important;
+	font-size: inherit !important;
+	font-weight: 450 !important;
+	text-overflow: ellipsis !important;
+	white-space: nowrap !important;
+}
+
+#threadTree .card-layout[data-properties~="unread"] .subject {
+	color: var(--fb-text) !important;
+	font-weight: 620 !important;
+}
+
+#threadTree .card-layout.children .card-container,
+#threadTree .card-layout[data-properties~="thread-children"] .card-container {
+	border-inline-start: 3px solid #63b7b3 !important;
+}
+
+#threadTree .thread-card-button {
+	margin-top: 0 !important;
+	align-self: center !important;
+}
+
+#threadTree .thread-card-icon-info {
+	margin-top: 0 !important;
+	align-items: center !important;
+}
+
+/* Align the action controls into two tidy columns at the card edge. */
+#threadTree .card-layout:not([data-properties~="dummy"]) .tree-button-more {
+	position: absolute !important;
+	inset-inline-end: 7px !important;
+	top: 6px !important;
+	margin: 0 !important;
+}
+
+#threadTree .card-layout:not([data-properties~="dummy"]) .button-star,
+#threadTree .card-layout:not([data-properties~="dummy"]) .tree-button-flag {
+	position: absolute !important;
+	inset-inline-end: 7px !important;
+	bottom: 6px !important;
+	margin: 0 !important;
+}
+
+/* Group headings should separate time periods without looking like messages. */
+#threadTree .card-layout[data-properties~="dummy"] {
+	height: 28px !important;
+}
+
+#threadTree .card-layout[data-properties~="dummy"] > td {
+	padding: 3px 6px 2px !important;
+}
+
+#threadTree .card-layout[data-properties~="dummy"] .card-container {
+	min-height: 22px !important;
+	padding: 1px 6px !important;
+	background: color-mix(in srgb, var(--fb-surface-solid) 88%, transparent) !important;
+	border: 0 !important;
+	border-bottom: 1px solid var(--fb-border) !important;
+	border-radius: 0 !important;
+	box-shadow: none !important;
+}
+
+#threadTree .card-layout[data-properties~="dummy"] .subject {
+	display: block !important;
+	color: var(--fb-text-muted) !important;
+	font-size: 0.76rem !important;
+	font-weight: 720 !important;
+	letter-spacing: 0.035em !important;
+	text-transform: uppercase !important;
+}
+
+/* Injected avatar and quick-delete controls from polished-ui.xpi. */
+.sender-avatar {
+	position: absolute !important;
+	inset-inline-start: 10px !important;
+	top: 50% !important;
+	transform: translateY(-50%) !important;
+	inline-size: 30px !important;
+	block-size: 30px !important;
+	border: 2px solid color-mix(in srgb, white 72%, transparent) !important;
+	border-radius: 50% !important;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18) !important;
+}
+
+.tb-trash-btn {
+	position: absolute !important;
+	inset-inline-end: 27px !important;
+	bottom: 3px !important;
+	inline-size: 24px !important;
+	block-size: 24px !important;
+	padding: 0 !important;
+	border: 0 !important;
+	border-radius: 7px !important;
+	background: transparent !important;
+	opacity: 0 !important;
+	visibility: hidden !important;
+	cursor: pointer !important;
+	transition: opacity 100ms ease, background-color 100ms ease, visibility 100ms ease !important;
+}
+
+.tb-trash-btn::after {
+	content: "" !important;
+	display: block !important;
+	inline-size: 16px !important;
+	block-size: 16px !important;
+	margin: auto !important;
+	background-color: var(--fb-text-muted) !important;
+	mask: url("Icons/trash.svg") center / contain no-repeat !important;
+}
+
+#threadTree .card-layout:hover .tb-trash-btn,
+#threadTree .card-layout.current .tb-trash-btn,
+#threadTree .card-layout.selected .tb-trash-btn,
+.tb-trash-btn:focus-visible {
+	opacity: 0.78 !important;
+	visibility: visible !important;
+}
+
+.tb-trash-btn:hover,
+.tb-trash-btn:focus-visible {
+	background-color: color-mix(in srgb, var(--fb-danger) 16%, transparent) !important;
+	opacity: 1 !important;
+	outline: 2px solid color-mix(in srgb, var(--fb-danger) 55%, transparent) !important;
+	outline-offset: -1px !important;
+}
+
+.tb-trash-btn:hover::after,
+.tb-trash-btn:focus-visible::after {
+	background-color: var(--fb-danger) !important;
+}
+
+/* Preserve Thunderbird's useful star action instead of hiding it. */
+#threadTree .card-layout .button-star,
+#threadTree .card-layout .tree-button-flag {
+	opacity: 0.5 !important;
+}
+
+#threadTree .card-layout:hover .button-star,
+#threadTree .card-layout:hover .tree-button-flag,
+#threadTree .card-layout .button-star[aria-pressed="true"] {
+	opacity: 1 !important;
+}
+
+/* Reading pane and action toolbar. */
+#messageHeader {
+	padding: 14px 18px !important;
+	background-color: var(--fb-surface-raised) !important;
+	border-bottom: 1px solid var(--fb-border) !important;
+}
+
+#expandedsubjectBox {
+	margin-bottom: 7px !important;
+	font-size: 1.28rem !important;
+	font-weight: 680 !important;
+	line-height: 1.28 !important;
+}
+
+.recipient-avatar {
+	inline-size: 48px !important;
+	block-size: 48px !important;
+	border: 2px solid color-mix(in srgb, var(--fb-accent) 28%, transparent) !important;
+	border-radius: 50% !important;
+	box-shadow: 0 2px 7px rgba(0, 0, 0, 0.13) !important;
+}
+
+.recipient-multi-line-name {
+	font-size: 1.23rem !important;
+	font-weight: 680 !important;
+}
+
+#messageHeader .toolbarbutton-1 {
+	min-height: 34px !important;
+	padding: 5px 9px !important;
+	border: 1px solid var(--fb-border) !important;
+	border-radius: 7px !important;
+	background-color: var(--fb-surface-raised) !important;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+#messageHeader .toolbarbutton-1:hover {
+	background-color: var(--fb-surface-hover) !important;
+	border-color: color-mix(in srgb, var(--fb-accent) 28%, var(--fb-border)) !important;
+}
+
+#messengerBody {
+	opacity: 1 !important;
+	border-top-left-radius: 10px !important;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--fb-accent: #78b2ff;
+		--fb-accent-strong: #5aa4ef;
+		--fb-danger: #ff7781;
+		--fb-text: #f1f4f8;
+		--fb-text-muted: #aeb6c2;
+		--fb-surface: rgba(22, 23, 26, 0.96);
+		--fb-surface-solid: #1d1f22;
+		--fb-surface-raised: rgba(31, 33, 37, 0.98);
+		--fb-surface-hover: rgba(30, 36, 44, 0.98);
+		--fb-surface-selected: rgba(49, 57, 67, 0.98);
+		--fb-border: rgba(224, 232, 242, 0.12);
+		--fb-border-strong: rgba(120, 178, 255, 0.52);
+		--fb-shadow: 0 1px 2px rgba(0, 0, 0, 0.26), 0 7px 20px rgba(0, 0, 0, 0.16);
+	}
+
+	.tab-background[selected="true"] {
+		background-color: var(--fb-surface-raised) !important;
+	}
+
+	.sender-avatar {
+		border-color: rgba(255, 255, 255, 0.16) !important;
+	}
+}
+
+@media (max-width: 1200px) {
+	:root {
+		--fb-row-height: 54px;
+	}
+
+	#threadTree .card-layout:not([data-properties~="dummy"]) .card-container {
+		padding-inline-start: 42px !important;
+	}
+
+	.sender-avatar {
+		inline-size: 28px !important;
+		block-size: 28px !important;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#spacesToolbar .spaces-toolbar-button,
+	#folderTree li > .container,
+	#threadTree .card-layout .card-container,
+	.tb-trash-btn {
+		transition: none !important;
+	}
 }

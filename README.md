@@ -1,121 +1,116 @@
-# Thunderbird Outlook Theme
+# FluentBird Polished for Thunderbird
 
-A custom Thunderbird theme that gives your email client an Outlook-style look — complete with sender avatar circles, an Outlook-inspired layout, and an optional one-click delete button on every email row.
+An Outlook-inspired visual overhaul for Thunderbird with modern message cards, sender avatars, quick account switching, a one-click delete action, and a customisable wallpaper.
 
-![Screenshot 1](screenshots/ThunderbirdThemeCensored.png)
-![Screenshot 2](screenshots/UpdatedThemeCensored.png)
+![FluentBird Polished account switcher and message list](screenshots/Thunderbird.png)
 
----
+![FluentBird Polished reading pane](screenshots/ThunderbirdMessage.png)
 
-## Features
+## What's included
 
-- **Outlook-style layout** — compact card view with sender initials, subject previews, and a clean dark theme
-- **Sender avatar circles** — coloured initials badges next to every email, just like Outlook (via addon)
-- **Trash button** *(optional addon)* — a clickable delete button on every email row; moves emails to Trash and supports Ctrl+Z undo
-- **Wallpaper background** — displays a wallpaper behind the email list and reading pane when no email is selected
-- **Mica transparency** — takes advantage of Windows 11 Mica blur effects
-- **Unread highlighting** — blue left border and bold text on unread messages
-- **Date group headers** — Today, Yesterday, Last 7 Days, etc.
+- **Polished message cards** with clearer spacing, rounded surfaces, sender and subject hierarchy, improved unread highlighting, and tidy date, star, attachment, menu, and delete controls.
+- **Colour-coded sender initials** beside every message, similar to Outlook and Gmail.
+- **One-click delete** on each message row without removing Thunderbird's normal favourite star.
+- **Email Accounts switcher** that opens each account's All Mail folder, or Inbox when All Mail is unavailable, without expanding or scrolling the normal folder tree.
+- **Flexible account organisation** with automatic provider groups, custom headers, a flat ungrouped mode, drag-and-drop ordering, hidden accounts, and persistent settings.
+- **Optional live unread badges** using the same rounded appearance as Thunderbird's native folder counts.
+- **Independent account-list sizing** using the `Aa` button to cycle through Compact, Comfortable, and Spacious layouts.
+- **Automatic date groups** so Today, Yesterday, Last 7 Days, and similar sections open when the mail view loads.
+- **Scroll-position preservation** so opening a message does not pull it into the centre of the list.
+- **Custom wallpaper and Windows 11 Mica support**, plus refined light, dark, narrow-window, keyboard-focus, and reduced-motion styling.
 
----
+The account switcher recognises Gmail, Outlook/Hotmail, iCloud, Yahoo, Proton Mail, AOL, Zoho Mail, Fastmail, GMX, Mail.com, Yandex, and Tuta. Other and custom domains automatically receive a group based on their domain. You can also create your own headers, such as Work or Personal, and assign any account to them.
 
 ## Requirements
 
-- **Thunderbird 115 or later** (tested on 150)
-- **Windows 10/11** recommended (Mica effects are Windows-only; the rest works on all platforms)
-
----
+- **Thunderbird 140 or newer** using Card View.
+- `toolkit.legacyUserProfileCustomizations.stylesheets` enabled for the CSS theme.
+- Windows 10/11 is recommended. Mica is Windows 11-only, but most styling works on other platforms.
 
 ## Installation
 
-### Step 1 — Enable userChrome.css
+### 1. Download the release
 
-1. Open Thunderbird
-2. Go to **Settings → General**
-3. Scroll to the bottom and click **Config Editor…**
-4. Search for `toolkit.legacyUserProfileCustomizations.stylesheets` and set it to **`true`**
-5. Restart Thunderbird
+Download `FluentBird-Polished-3.3.3.zip` from the [latest release](../../releases/latest) and extract it.
 
-### Step 2 — Enable Mica transparency *(Windows 11 only, optional)*
+The archive contains:
 
-In the Config Editor:
-- Set `widget.windows.mica` → **`true`**
-- Set `widget.windows.mica.popups` → **`2`**
+- `chrome/` — the theme, icons, and wallpaper.
+- `polished-ui.xpi` — sender avatars, quick delete, date-group defaults, scroll fixes, and the account switcher.
+- `POLISHED-README.md` — an offline copy of the installation notes.
 
-### Step 3 — Copy the theme files
+### 2. Install the CSS theme
 
-1. In Thunderbird, go to **Help → Troubleshooting Information**
-2. Next to **Profile Folder**, click **Open Folder**
-3. Inside your profile folder, open (or create) a folder named **`chrome`**
-4. Copy all files from this repository into that `chrome` folder:
-   - `userChrome.css`
-   - `custom.css`
-   - `Titlebar_Icons/` folder
-   - `user.js` *(optional)* — automatically sets a couple of config tweaks on startup (disables the "What's New" page after updates). Place it directly in your **profile folder** (one level above `chrome`), not inside `chrome` itself.
-5. If you want a wallpaper background, place an image named **`wallpaper.jpg`** in the `chrome` folder. Remove or rename it if you do not want a background.
-6. Restart Thunderbird
+1. Open Thunderbird and go to **Help → Troubleshooting Information**.
+2. Next to **Profile Folder**, select **Open Folder**.
+3. Close Thunderbird completely.
+4. Back up any existing `chrome` folder if it contains your own customisations.
+5. Copy the extracted `chrome` folder into the profile folder, replacing the previous FluentBird files when upgrading.
+6. Start Thunderbird and open **Settings → General → Config Editor**.
+7. Set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`.
+8. Restart Thunderbird.
 
-> Make sure **no other theme** is active in Thunderbird settings. Set the theme to **System Theme**.
+Set Thunderbird's built-in theme to **System Theme** so it does not conflict with FluentBird.
 
----
+### 3. Install the FluentBird add-on
 
-## Optional Addons
+1. Remove or disable the old **Sender Avatars** and **Trash Button** add-ons if you used version 1.0.
+2. Open **Tools → Add-ons and Themes → Extensions**.
+3. Select the gear menu and choose **Install Add-on From File…**.
+4. Select `polished-ui.xpi` from the extracted release.
+5. Accept Thunderbird's full-access prompt and restart Thunderbird.
 
-Both addons are WebExtension experiments and require one extra config change before installing.
+The add-on uses a Thunderbird Experiment API because the required Thunderbird interface elements are not exposed through standard extension APIs. It works locally, makes no network requests, and does not read message bodies.
 
-**Enable addon experiments (one-time setup):**
+If Thunderbird blocks installation, open the Config Editor and confirm `extensions.experiments.enabled` is `true`. Unsigned local builds may also require `xpinstall.signatures.required` to be `false`; only change that setting if you understand the security implications and obtained the XPI from this repository.
 
-1. Open the Config Editor (`Settings → General → Config Editor…`)
-2. Search for `extensions.experiments.enabled` and set it to **`true`**
-3. Search for `xpinstall.signatures.required` and set it to **`false`**
-4. Restart Thunderbird
+### 4. Match the screenshot layout
 
-### Sender Avatar Circles
+Enable Thunderbird's **Card View** and group the message list by date if you want the Today, Yesterday, and Last 7 Days headings shown in the screenshots.
 
-Adds coloured initials circles next to every email row, just like Outlook.
+## Using the account switcher
 
-**Install:**
-1. Download `sender-avatars.xpi` from the [Releases](../../releases) page
-2. In Thunderbird, go to **Add-ons and Themes** (`Tools → Add-ons and Themes`)
-3. Click the gear icon → **Install Add-on From File…**
-4. Select `sender-avatars.xpi`
-5. Restart Thunderbird
+- Click an email address to open All Mail, with Inbox used as a fallback.
+- Drag an account to reorder it within its group.
+- Drag a provider or custom heading to reorder entire groups.
+- Press **Aa** to change only the account-list size.
+- Press the settings button beside **Email Accounts** to control grouping, unread badges, account visibility, custom headers, the All Folders section, and header buttons.
+- If you hide the header buttons, right-click **Email Accounts** to reopen its options.
 
-### Trash Button *(optional)*
+All choices persist across Thunderbird restarts. **Reset custom order** restores the automatic provider/alphabetical order.
 
-Adds a clickable trash icon to each email row that moves the email to Trash. Supports Ctrl+Z undo.
+## Customising the wallpaper
 
-**Install:**
-1. Download `trash-button.xpi` from the [Releases](../../releases) page
-2. Follow the same install steps as above, selecting `trash-button.xpi`
-3. Restart Thunderbird
+Replace `chrome/wallpaper.jpg` with your own image using exactly the same filename. A high-resolution or 4K image is recommended.
 
----
+## Upgrading from version 1.0
+
+1. Back up your current Thunderbird `chrome` folder.
+2. Replace it with the `chrome` folder from the 3.3.3 release.
+3. Disable or remove the original `sender-avatars.xpi` and `trash-button.xpi` add-ons.
+4. Install `polished-ui.xpi`.
+5. Restart Thunderbird.
+
+The original release remains available as [version 1.0](../../releases/tag/v1.0), including its two separate add-ons and original theme files.
 
 ## Uninstalling
 
-- **Theme:** delete `userChrome.css`, `custom.css`, and the `Titlebar_Icons` folder from your `chrome` directory, then restart.
-- **Addons:** go to **Add-ons and Themes**, find the addon, and click **Remove**.
+- **Theme:** remove the FluentBird files from your profile's `chrome` folder and restart Thunderbird.
+- **Add-on:** open Add-ons and Themes, find **FluentBird Polished UI**, and select **Remove**.
 
----
+## Known limitations
 
-## Known Issues
+- Designed around Thunderbird 140+ Card View; future Thunderbird interface changes may require updates.
+- Windows 11 Mica does not work on other operating systems.
+- Compose, Settings, Calendar, Tasks, Chat, and some Shadow DOM surfaces have more limited theme coverage.
+- The account switcher uses Thunderbird's English folder name `All Mail` and falls back to Inbox when it cannot find it.
 
-- Mica transparency only works on Windows 11.
-- Some areas of Thunderbird (Settings pages, compose window, popups) are rendered in a Shadow DOM and cannot be themed via userChrome.css.
-- Calendar, Tasks, and Chat sections have limited styling coverage.
+## Changelog
 
----
+See [CHANGELOG.md](CHANGELOG.md) for the main differences between the original release and FluentBird Polished.
 
-## Credits
+## Credits and licence
 
-Titlebar icons (maximise button) are from the [FluentBird](https://www.dannyking.co.uk) project by **Danny King** — thank you!
+Titlebar icons are based on the [FluentBird](https://www.dannyking.co.uk) project by Danny King.
 
-Fluent Design icons are provided by Microsoft, licensed under the MIT License.
-Copyright (c) Microsoft Corporation.
-
----
-
-## License
-
-MIT License — free to use, modify, and share.
+Fluent Design icons are provided by Microsoft under the MIT License. FluentBird Polished is also distributed under the [MIT License](LICENSE).

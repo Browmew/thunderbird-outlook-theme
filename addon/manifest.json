@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "FluentBird Polished UI",
+  "version": "3.3.3",
+  "description": "Adds polished sender avatars, quick delete controls, folder defaults, and a configurable account switcher to Thunderbird card view.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "fluentbird-polished-ui@local",
+      "strict_min_version": "140.0"
+    }
+  },
+  "experiment_apis": {
+    "PolishedUI": {
+      "schema": "experiment/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["PolishedUI"]],
+        "script": "experiment/implementation.js",
+        "events": ["startup"]
+      }
+    }
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  }
+}
